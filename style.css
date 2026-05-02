@@ -1,0 +1,105 @@
+/* Variabili Material You (M3) */
+:root {
+    --md-sys-color-primary: #0056d2;
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-primary-container: #d7e2ff;
+    --md-sys-color-on-primary-container: #001a40;
+    --md-sys-color-surface: #fdfbff;
+    --md-sys-color-on-surface: #1a1c1e;
+    --md-sys-color-surface-variant: #e1e2ec;
+    --md-sys-color-on-surface-variant: #44474f;
+    --md-sys-color-outline: #74777f;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Barra di navigazione Material You (Navigation Bar) */
+nav {
+    background-color: var(--md-sys-color-surface-variant);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.nav-container {
+    display: flex;
+    gap: 8px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--md-sys-color-on-surface-variant);
+    font-weight: 500;
+    padding: 10px 24px;
+    border-radius: 20px; /* Forma a pillola */
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+/* Stato attivo o hover */
+nav a:hover {
+    background-color: rgba(0, 86, 210, 0.08);
+    color: var(--md-sys-color-primary);
+}
+
+nav a.active {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+/* Contenitore principale (Card stile M3) */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 32px;
+    background-color: #ffffff;
+    border-radius: 28px; /* Angoli molto arrotondati tipici di M3 */
+    border: 1px solid var(--md-sys-color-surface-variant);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--md-sys-color-primary);
+    margin-bottom: 24px;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: var(--md-sys-color-surface);
+    margin-bottom: 12px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid var(--md-sys-color-outline);
+    transition: transform 0.2s;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    border-color: var(--md-sys-color-primary);
+}
+
+strong {
+    color: var(--md-sys-color-primary);
+}
