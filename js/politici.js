@@ -6,13 +6,13 @@ fetch(url+"index.json")
   .then(response => response.json())
   .then(data => {
     index = data;
-    renderIndex();
   })
   .catch(err => console.error("Errore:", err));
 fetch(url+"politici.json")
     .then(response => response.json())
     .then(data => {
         politici = data;
+        renderPolitici();
     });
 fetch(url+"partiti.json")
     .then(response => response.json())
