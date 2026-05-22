@@ -1,41 +1,49 @@
-let index=[];
-let politici=[];
-let partiti=[];
+let index = [];
 const url = "https://raw.githubusercontent.com/ItaliaConsapevole/html/main/data/";
-fetch(url+"index.json")
+
+fetch(url + "index.json")
   .then(response => response.json())
   .then(data => {
     index = data;
     renderIndex();
   })
   .catch(err => console.error("Errore:", err));
-fetch(url+"politici.json")
-    .then(response => response.json())
-    .then(data => {
-        politici = data;
-    });
-fetch(url+"partiti.json")
-    .then(response => response.json())
-    .then(data => {
-        partiti = data;
-    });
+
+function slug(value) {
+    return value.toString().toLowerCase().trim()
+        .replace(/[àáâãäå]/g, 'a')
+        .replace(/[èéêë]/g, 'e')
+        .replace(/[ìíîï]/g, 'i')
+        .replace(/[òóôõö]/g, 'o')
+        .replace(/[ùúûü]/g, 'u')
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+}
 
 function renderIndex() {
     if (!Array.isArray(index) || index.length <= 1) {
         document.getElementById('content').innerHTML = '';
         return;
     }
-    sorted=index.slice(1).sort((a, b) => new Date(b.data) - new Date(a.data));
-    let HTML = "";
-    //data in formato giorno mese anno
-    let mesi=["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"];
-    for (let i = 1; i < index.length; i++) {
-        let data = new Date(sorted[i-1].data);
-        let giorno = data.getDate();
-        let mese = data.getMonth() + 1; //traduci in italiano
-        mese = mesi[mese - 1]; //traduci in italiano
-        let anno = data.getFullYear();
-        HTML += "<button type='button' class='source-card'><span class='nome'>" + sorted[i-1].nome + "</span><span class='messaggio'>" + sorted[i-1].messaggio + "</span><span class='data'>" + giorno + " " + mese + " " + anno + "</span></button>";
-    }
+    const sorted = index.slice(1).sort((a, b) => new Date(b.data) - new Date(a.data));
+    const mesi = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+    let HTML = '<div class="cards-grid">';
+    sorted.forEach(item => {
+        const data = new Date(item.data);
+        const giorno = data.getDate();
+        const mese = mesi[data.getMonth()];
+        const anno = data.getFullYear();
+
+        const politicianLink = `politici.html#${slug(item.nome)}`;
+        HTML += `
+            <article class="source-card">
+                <span class="data">${giorno} ${mese} ${anno}</span>
+                <h2 class="nome"><a class="politician-link" href="${politicianLink}">${item.nome}</a></h2>
+                <p class="messaggio">${item.messaggio}</p>
+            </article>`;
+    });
+
+    HTML += '</div>';
     document.getElementById('content').innerHTML = HTML;
 }

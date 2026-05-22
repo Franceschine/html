@@ -1,9 +1,99 @@
 [
-    1,
+    12,
     {
         "coalizione": "Destra",
-        "orientameto": "Destra",
+        "orientamento": "Destra / Conservatorismo nazionale",
         "leader": "Giorgia Meloni",
-        "partito": "Fratelli d'Italia"
+        "partito": "Fratelli d'Italia",
+        "affiliazione": "Conservatori e Riformisti Europei (ECR)",
+        "descrizione": "Partito conservatore e nazionalista guidato dalla Premier Giorgia Meloni, attualmente principale forza politica della coalizione di governo."
+    },
+    {
+        "coalizione": "Destra",
+        "orientamento": "Destra / Populismo di destra",
+        "leader": "Matteo Salvini",
+        "partito": "Lega",
+        "affiliazione": "Patrioti per l'Europa (PfE)",
+        "descrizione": "Forza politica orientata al federalismo e al populismo di destra, focalizzata sui temi della sicurezza e del controllo dell'immigrazione."
+    },
+    {
+        "coalizione": "Destra",
+        "orientamento": "Centro-destra / Conservatorismo liberale",
+        "leader": "Antonio Tajani",
+        "partito": "Forza Italia",
+        "affiliazione": "Partito Popolare Europeo (PPE)",
+        "descrizione": "Partito di centro-destra di matrice liberale ed europeista, fondato da Silvio Berlusconi e oggi guidato da Antonio Tajani."
+    },
+    {
+        "coalizione": "Destra",
+        "orientamento": "Centro / Cristianesimo democratico",
+        "leader": "Maurizio Lupi",
+        "partito": "Noi Moderati",
+        "affiliazione": "Partito Popolare Europeo (PPE)",
+        "descrizione": "Lista centrista d'ispirazione cattolico-liberale che raccoglie diverse anime moderate alleate all'interno dello schieramento di centro-destra."
+    },
+    {
+        "coalizione": "Sinistra",
+        "orientamento": "Centro-sinistra / Socialdemocrazia",
+        "leader": "Elly Schlein",
+        "partito": "Partito Democratico",
+        "affiliazione": "Socialisti e Democratici (S&D)",
+        "descrizione": "Principale partito del centro-sinistra italiano, nato dall'unione di tradizioni socialdemocratiche, cattolico-democratiche ed ecologiste."
+    },
+    {
+        "coalizione": "Sinistra",
+        "orientamento": "Sinistra / Ecosocialismo",
+        "leader": "Angelo Bonelli / Nicola Fratoianni",
+        "partito": "Alleanza Verdi e Sinistra",
+        "affiliazione": "Verdi/ALE & La Sinistra (The Left)",
+        "descrizione": "Alleanza progressista che unisce Sinistra Italiana ed Europa Verde, incentrata sui diritti sociali, l'ambientalismo e la giustizia climatica."
+    },
+    {
+        "coalizione": "Sinistra",
+        "orientamento": "Centro / Liberalismo, Europeismo",
+        "leader": "Riccardo Magi",
+        "partito": "+Europa",
+        "affiliazione": "Renew Europe (ALDE)",
+        "descrizione": "Partito politico di orientamento liberale, fortemente europeista e attivo nella promozione dei diritti civili e delle libertà individuali."
+    },
+    {
+        "coalizione": "Indipendente",
+        "orientamento": "Populismo / Ecologismo / Progressismo",
+        "leader": "Giuseppe Conte",
+        "partito": "Movimento 5 Stelle",
+        "affiliazione": "La Sinistra (The Left)",
+        "descrizione": "Nato come movimento anti-establishment basato sulla democrazia diretta, si posiziona oggi come forza progressista incentrata su transizione ecologica e misure sociali."
+    },
+    {
+        "coalizione": "Indipendente",
+        "orientamento": "Centro / Liberalismo sociale",
+        "leader": "Carlo Calenda",
+        "partito": "Azione",
+        "affiliazione": "Renew Europe (ALDE)",
+        "descrizione": "Partito di centro d'impronta riformista e tecnocratica, che promuove il liberalismo sociale, la crescita economica e l'efficienza amministrativa."
+    },
+    {
+        "coalizione": "Indipendente",
+        "orientamento": "Centro / Riformismo liberale",
+        "leader": "Matteo Renzi",
+        "partito": "Italia Viva",
+        "affiliazione": "Renew Europe (PDE)",
+        "descrizione": "Formazione centrista e liberale fondata dall'ex Premier Matteo Renzi a seguito della scissione dal PD, focalizzata su riforme istituzionali ed economiche."
+    },
+    {
+        "coalizione": "Indipendente",
+        "orientamento": "Regionalismo / Meridionalismo",
+        "leader": "Cateno De Luca",
+        "partito": "Sud chiama Nord",
+        "affiliazione": "Nessuna (Non iscritti)",
+        "descrizione": "Partito regionalista basato in Sicilia con un forte focus sul meridionalismo, sull'autonomia locale e sulla lotta al centralismo statale."
+    },
+    {
+        "coalizione": "Indipendente",
+        "orientamento": "Centro / Autonomismo",
+        "leader": "Dieter Steger",
+        "partito": "Südtiroler Volkspartei",
+        "affiliazione": "Partito Popolare Europeo (PPE)",
+        "descrizione": "Partito storico che rappresenta gli interessi delle minoranze linguistiche tedesca e ladina nella provincia autonoma di Bolzano."
     }
 ]

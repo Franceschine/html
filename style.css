@@ -122,6 +122,137 @@ nav a.active {
     font-weight: 600;
 }
 
+.source-card a,
+.party-link,
+.politician-link {
+    color: var(--md-sys-color-primary);
+    text-decoration: none;
+}
+
+.source-card a:hover,
+.party-link:hover,
+.politician-link:hover {
+    text-decoration: underline;
+}
+
+.politico-details {
+    margin-top: 16px;
+    border-top: 1px solid rgba(53, 83, 241, 0.12);
+    padding-top: 14px;
+}
+
+.politico-details summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--md-sys-color-primary);
+}
+
+.party-label {
+    display: block;
+    margin-top: 10px;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.source-card a,
+.party-link,
+.politician-link {
+    color: var(--md-sys-color-primary);
+    text-decoration: none;
+}
+
+.source-card a:hover,
+.party-link:hover,
+.politician-link:hover {
+    text-decoration: underline;
+}
+
+.politico-details {
+    margin-top: 16px;
+    border-top: 1px solid rgba(53, 83, 241, 0.12);
+    padding-top: 14px;
+}
+
+.politico-details summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--md-sys-color-primary);
+}
+
+.party-label {
+    display: block;
+    margin-top: 10px;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.page-container {
+    max-width: 1040px;
+    margin: 36px auto 48px;
+    padding: 0 20px;
+}
+
+.page-header {
+    margin-bottom: 24px;
+}
+
+.page-title {
+    margin: 0 0 10px;
+    font-size: clamp(2rem, 2.5vw, 2.8rem);
+    line-height: 1.05;
+}
+
+.page-description {
+    margin: 0;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 1rem;
+    max-width: 760px;
+}
+
+.cards-grid,
+.party-members {
+    display: grid;
+    gap: 20px;
+}
+
+.party-group {
+    margin-bottom: 32px;
+}
+
+.coalition-layout {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.coalition-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.coalition-panel.full-width {
+    grid-column: 1 / -1;
+}
+
+.section-title {
+    margin: 0;
+    font-size: 1.35rem;
+    color: var(--md-sys-color-primary);
+}
+
+.role,
+.function {
+    display: block;
+    margin-top: 10px;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 0.98rem;
+}
+
+.empty-state {
+    margin: 0;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 0.98rem;
+}
+
 @media (max-width: 720px) {
     nav {
         height: auto;
@@ -130,10 +261,20 @@ nav a.active {
     .nav-container {
         justify-content: center;
     }
+    #content {
+        margin: 20px auto 32px;
+    }
     .source-card {
         padding: 20px;
     }
     .source-card .nome {
         font-size: 1.2rem;
+    }
+    .coalition-layout {
+        grid-template-columns: 1fr;
+    }
+    .page-container {
+        margin: 24px auto 32px;
+        padding: 0 16px;
     }
 }
