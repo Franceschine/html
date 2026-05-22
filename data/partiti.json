@@ -2,7 +2,8 @@
     1,
     {
         "coalizione": "Destra",
-        "Leader": "Giorgia Meloni",
-        "Partito": "Fratelli d'Italia"
+        "orientameto": "Destra",
+        "leader": "Giorgia Meloni",
+        "partito": "Fratelli d'Italia"
     }
 ]

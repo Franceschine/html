@@ -28,7 +28,7 @@ function renderPolitici() {
     sorted=politici.slice(1).sort((a, b) => a.nome.localeCompare(b.nome));
     let HTML = "";
     for (let i = 1; i < politici.length; i++) {
-        HTML += "<button type='button' class='source-card'><span class='nome'>" + sorted[i-1].nome + "</span><span class='partito'>" + sorted[i-1].partito + "</span><span class='ruolo'>" + sorted[i-1].ruolo + "</span></button>";
+        HTML += "<button type='button' class='source-card'><span class='nome'>" + sorted[i-1].nome + "</span><span class='function'>"+" di "+sorted[i-1].funzione+"</span><span class='partito'>" + sorted[i-1].partito + "</span><span class='ruolo'>"+" "+sorted[i-1].ruolo + "</span></button>";
     }
     document.getElementById('content').innerHTML = HTML;
 }

@@ -14,5 +14,10 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
-
+<!-- Partiti -->
+  <url>
+    <loc>https://italiaconsapevole.ddns.net/partiti.html</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
 </urlset>
