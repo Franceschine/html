@@ -38,9 +38,11 @@ function renderIndex() {
         const politicianLink = `politici.html#${slug(item.nome)}`;
         HTML += `
             <article class="source-card">
-                <span class="data">${giorno} ${mese} ${anno}</span>
-                <h2 class="nome"><a class="politician-link" href="${politicianLink}">${item.nome}</a></h2>
                 <p class="messaggio">${item.messaggio}</p>
+                <div class="declaration-meta">
+                    <span class="nome"><a class="politician-link" href="${politicianLink}">${item.nome}</a></span>
+                    <span class="data">${giorno} ${mese} ${anno}</span>
+                </div>
             </article>`;
     });
 

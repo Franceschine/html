@@ -3,22 +3,29 @@
   <!-- Pagina Principale (Homepage) -->
   <url>
     <loc>https://italiaconsapevole.ddns.net/index.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <!-- Politici -->
   <url>
     <loc>https://italiaconsapevole.ddns.net/politici.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <!-- Partiti -->
   <url>
     <loc>https://italiaconsapevole.ddns.net/partiti.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <!-- Il progetto -->
+  <url>
+    <loc>https://italiaconsapevole.ddns.net/il-progetto.html</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>
