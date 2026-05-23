@@ -150,11 +150,13 @@ function renderPolitici(filterValue = '') {
         members.forEach(politico => {
             const declarationsForPolitico = declarationsByPolitician[politico.nome] || [];
             const declarationItems = declarationsForPolitico.length
-                ? declarationsForPolitico.map(entry => `<li><strong>${entry.data}</strong>: ${entry.messaggio}</li>`).join('')
+                ? declarationsForPolitico.map(entry => `<li><strong>${entry.data}</strong>: <em>${politico.ruolo} e ${politico.funzione} di ${politico.partito}</em><br>${entry.messaggio}</li>`).join('')
                 : '<li>Nessuna dichiarazione disponibile.</li>';
             const affiliation = getAffiliationForParty(politico.partito || '');
             const coalition = getCoalitionForParty(politico.partito || '');
-                const partyImage = imagesByParty[normalizeString(politico.partito || '')] || {};
+                // try to find the best matching party image key (partial match)
+                const partyKey = Object.keys(imagesByParty || {}).find(k => normalizeString(politico.partito || '').includes(k) || k.includes(normalizeString(politico.partito || '')));
+                const partyImage = (partyKey && imagesByParty[partyKey]) || imagesByParty[normalizeString(politico.partito || '')] || {};
                 const personImage = imagesByPolitician[normalizeString(politico.nome || '')] || {};
                 const photoSrc = (personImage && personImage.photo) || (partyImage && partyImage.logo) || defaultPersonPhoto;
                 const partyColor = partyImage.color || '';
@@ -169,12 +171,11 @@ function renderPolitici(filterValue = '') {
                             <div>
                                 <span class="nome">${politico.nome}</span>
                                 <div class="metadata">
-                                    <span class="badge badge-coalition" ${badgeStyle}>${coalition}</span>
+                                    <span class="badge badge-function" ${badgeStyle}>${politico.funzione}</span>
                                 </div>
                             </div>
                         </div>
-                        <span class="role">${politico.ruolo}</span>
-                        <span class="function">${politico.funzione}</span>
+                        <div class="role-function">${politico.ruolo}</div>
                         <details class="politico-details">
                             <summary>Dichiarazioni</summary>
                             <ul>${declarationItems}</ul>
