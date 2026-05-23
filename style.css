@@ -413,7 +413,8 @@ nav a.active {
     object-fit: contain;
 }
 
-.party-card[style] {
+.party-card {
+    border-left: 4px solid var(--party-color, transparent);
     transition: border-left-color 0.2s ease;
 }
 

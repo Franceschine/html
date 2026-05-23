@@ -10,6 +10,17 @@ function normalizeString(value) {
     return value.toString().toLowerCase().trim().replace(/\s+/g, ' ');
 }
 
+function readableTextColor(hex) {
+    if (!hex) return '#000';
+    const c = hex.replace('#','');
+    const r = parseInt(c.substr(0,2),16);
+    const g = parseInt(c.substr(2,2),16);
+    const b = parseInt(c.substr(4,2),16);
+    // relative luminance
+    const luminance = (0.299*r + 0.587*g + 0.114*b)/255;
+    return luminance > 0.6 ? '#000' : '#fff';
+}
+
 function getAffiliationForParty(name) {
     const normalized = normalizeString(name);
     if (partitoAffiliazioni[normalized]) return partitoAffiliazioni[normalized];
@@ -28,7 +39,7 @@ Promise.all([
     fetch(url + "politici.json").then(response => response.json()),
     fetch(url + "index.json").then(response => response.json()),
     fetch(url + "partiti.json").then(response => response.json()),
-    fetch("data/images.json").then(response => response.json()).catch(() => ({}))
+    fetch(url + "images.json").then(response => response.json()).catch(() => ({}))
 ])
     .then(([politiciData, dichiarazioniData, partitiData, imagesData]) => {
         politici = politiciData;
@@ -133,18 +144,22 @@ function renderPolitici(filterValue = '') {
                 : '<li>Nessuna dichiarazione disponibile.</li>';
             const affiliation = getAffiliationForParty(politico.partito || '');
             const coalition = getCoalitionForParty(politico.partito || '');
-                const partyImage = imagesByParty[normalizeString(politico.partito || '')];
-                const personImage = imagesByPolitician[normalizeString(politico.nome || '')];
+                const partyImage = imagesByParty[normalizeString(politico.partito || '')] || {};
+                const personImage = imagesByPolitician[normalizeString(politico.nome || '')] || {};
                 const photoSrc = (personImage && personImage.photo) || (partyImage && partyImage.logo) || 'img/default-person.png';
+                const partyColor = partyImage.color || '';
+                const badgeTextColor = partyColor ? readableTextColor(partyColor) : '';
+                const photoStyle = partyColor ? `style="border:2px solid ${partyColor};"` : '';
+                const badgeStyle = partyColor ? `style="background:${partyColor}; color:${badgeTextColor}"` : '';
 
                 HTML += `
                     <article class="source-card" id="${slug(politico.nome)}">
                         <div class="person-row">
-                            <img class="politician-photo" src="${photoSrc}" alt="${politico.nome}">
+                            <img class="politician-photo" src="${photoSrc}" alt="${politico.nome}" ${photoStyle}>
                             <div>
                                 <span class="nome">${politico.nome}</span>
                                 <div class="metadata">
-                                    <span class="badge badge-coalition">${coalition}</span>
+                                    <span class="badge badge-coalition" ${badgeStyle}>${coalition}</span>
                                     <span class="badge badge-affiliation">${affiliation || 'Affiliazione non specificata'}</span>
                                 </div>
                             </div>
