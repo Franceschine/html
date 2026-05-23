@@ -1,0 +1,15 @@
+{
+  "parties": {
+    "fratelli d'italia": { "logo": "img/Fratelli_d_Italia.png", "color": "#d22f2f" },
+    "partito democratico": { "logo": "img/Partito_Democratico.png", "color": "#6abf49" },
+    "movimento 5 stelle": { "logo": "img/Movimento_5_Stelle.png", "color": "#f5a623" },
+    "lega": { "logo": "img/Lega.png", "color": "#2b6fb8" },
+    "forza italia": { "logo": "img/Forza_Italia.png", "color": "#0066cc" },
+    "noi moderati": { "logo": "img/Noi_Moderati.png", "color": "#ff9900" },
+    "alleanza verdi e sinistra": { "logo": "img/Alleanza_Verdi_Sinistra.png", "color": "#2e8b57" },
+    "+europa": { "logo": "img/Piu_Europa.png", "color": "#00a3e0" },
+    "azione": { "logo": "img/Azione.png", "color": "#d32f2f" },
+    "italia viva": { "logo": "img/Italia_Viva.png", "color": "#ff6fa3" }
+  },
+  "politicians": {}
+}

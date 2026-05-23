@@ -46,6 +46,10 @@ body {
     min-height: 100vh;
 }
 
+p {
+    text-align: justify;
+}
+
 nav {
     background-color: var(--md-sys-color-nav);
     backdrop-filter: blur(18px);
@@ -267,37 +271,6 @@ nav a.active {
     color: var(--md-sys-color-on-surface-variant);
 }
 
-.source-card a,
-.party-link,
-.politician-link {
-    color: var(--md-sys-color-primary);
-    text-decoration: none;
-}
-
-.source-card a:hover,
-.party-link:hover,
-.politician-link:hover {
-    text-decoration: underline;
-}
-
-.politico-details {
-    margin-top: 16px;
-    border-top: 1px solid rgba(53, 83, 241, 0.12);
-    padding-top: 14px;
-}
-
-.politico-details summary {
-    cursor: pointer;
-    font-weight: 700;
-    color: var(--md-sys-color-primary);
-}
-
-.party-label {
-    display: block;
-    margin-top: 10px;
-    color: var(--md-sys-color-on-surface-variant);
-}
-
 .page-container {
     max-width: 1040px;
     margin: 36px auto 48px;
@@ -319,6 +292,129 @@ nav a.active {
     color: var(--md-sys-color-on-surface-variant);
     font-size: 1rem;
     max-width: 760px;
+}
+
+.page-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 18px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1 1 320px;
+    min-width: 240px;
+}
+
+.search-box label {
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(53, 83, 241, 0.16);
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-box input:focus {
+    border-color: rgba(53, 83, 241, 0.32);
+    box-shadow: 0 0 0 6px rgba(53, 83, 241, 0.08);
+}
+
+.page-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.page-summary span {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background-color: rgba(53, 83, 241, 0.08);
+    color: var(--md-sys-color-primary);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+
+.badge-coalition {
+    background-color: rgba(53, 83, 241, 0.12);
+    color: var(--md-sys-color-primary);
+}
+
+.badge-affiliation {
+    background-color: rgba(38, 101, 255, 0.14);
+    color: var(--md-sys-color-primary);
+}
+
+.metadata {
+    margin-top: 12px;
+}
+
+.person-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.politician-photo {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid rgba(0,0,0,0.06);
+}
+
+.party-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.party-card[style] {
+    transition: border-left-color 0.2s ease;
 }
 
 .highlighted {
@@ -485,7 +581,6 @@ nav a.active {
     }
 }
 
-.project-editor,
 .project-card {
     max-width: 900px;
     margin: 0 auto;
@@ -496,45 +591,9 @@ nav a.active {
     box-shadow: var(--md-sys-elevation-shadow);
 }
 
-.project-editor h2,
 .project-links h2 {
     margin-top: 0;
     color: var(--md-sys-color-primary);
-}
-
-.project-editor textarea {
-    width: 100%;
-    min-height: 220px;
-    border-radius: 18px;
-    border: 1px solid rgba(53, 83, 241, 0.16);
-    background-color: var(--md-sys-color-background);
-    color: var(--md-sys-color-on-surface);
-    padding: 16px;
-    font-size: 1rem;
-    resize: vertical;
-}
-
-.editor-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 16px;
-}
-
-.editor-actions button {
-    border: none;
-    border-radius: 999px;
-    padding: 12px 18px;
-    cursor: pointer;
-    font-weight: 700;
-    background-color: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
-    transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.editor-actions button:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.05);
 }
 
 .project-links ul {
