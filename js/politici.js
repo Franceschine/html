@@ -5,6 +5,16 @@ let partitoCoalizioni = {};
 let imagesByParty = {};
 let imagesByPolitician = {};
 const url = "https://raw.githubusercontent.com/ItaliaConsapevole/html/main/data/";
+const defaultPersonPhoto = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="140" height="140"%3E%3Crect width="140" height="140" fill="%23f8f9ff"/%3E%3Ccircle cx="70" cy="45" r="32" fill="%23cbd2e6"/%3E%3Crect x="30" y="86" width="80" height="32" rx="16" fill="%23cbd2e6"/%3E%3C/svg%3E';
+
+function loadRemoteJSON(filename) {
+    return fetch(url + filename)
+        .then(response => response.ok ? response.json() : Promise.reject())
+        .catch(() => fetch(`data/${filename}`)
+            .then(response => response.ok ? response.json() : Promise.reject())
+            .catch(() => ({}))
+        );
+}
 
 function normalizeString(value) {
     return value.toString().toLowerCase().trim().replace(/\s+/g, ' ');
@@ -36,10 +46,10 @@ function getCoalitionForParty(name) {
 }
 
 Promise.all([
-    fetch(url + "politici.json").then(response => response.json()),
-    fetch(url + "index.json").then(response => response.json()),
-    fetch(url + "partiti.json").then(response => response.json()),
-    fetch(url + "images.json").then(response => response.json()).catch(() => ({}))
+    loadRemoteJSON("politici.json"),
+    loadRemoteJSON("index.json"),
+    loadRemoteJSON("partiti.json"),
+    loadRemoteJSON("images.json")
 ])
     .then(([politiciData, dichiarazioniData, partitiData, imagesData]) => {
         politici = politiciData;
@@ -146,11 +156,11 @@ function renderPolitici(filterValue = '') {
             const coalition = getCoalitionForParty(politico.partito || '');
                 const partyImage = imagesByParty[normalizeString(politico.partito || '')] || {};
                 const personImage = imagesByPolitician[normalizeString(politico.nome || '')] || {};
-                const photoSrc = (personImage && personImage.photo) || (partyImage && partyImage.logo) || 'img/default-person.png';
+                const photoSrc = (personImage && personImage.photo) || (partyImage && partyImage.logo) || defaultPersonPhoto;
                 const partyColor = partyImage.color || '';
                 const badgeTextColor = partyColor ? readableTextColor(partyColor) : '';
                 const photoStyle = partyColor ? `style="border:2px solid ${partyColor};"` : '';
-                const badgeStyle = partyColor ? `style="background:${partyColor}; color:${badgeTextColor}"` : '';
+                const badgeStyle = partyColor ? `style="background:${partyColor}; color:${badgeTextColor};"` : '';
 
                 HTML += `
                     <article class="source-card" id="${slug(politico.nome)}">
@@ -160,7 +170,6 @@ function renderPolitici(filterValue = '') {
                                 <span class="nome">${politico.nome}</span>
                                 <div class="metadata">
                                     <span class="badge badge-coalition" ${badgeStyle}>${coalition}</span>
-                                    <span class="badge badge-affiliation">${affiliation || 'Affiliazione non specificata'}</span>
                                 </div>
                             </div>
                         </div>
