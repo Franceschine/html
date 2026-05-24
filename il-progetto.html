@@ -43,9 +43,61 @@
             <p>Puoi contribuire in modo anonimo: scegli se aggiungere o modificare contenuti.</p>
             <div id="anon-form">
                 <div class="anon-actions">
-                    <button id="anon-aggiungi">Aggiungi</button>
-                    <button id="anon-modifica">Modifica</button>
-                    <button id="anon-gestisci">Gestisci contributi</button>
+                    <button id="btnMostra" onclick="mostraCasella()">Suggerisci una modifica</button>
+                    <div id="areaInserimento">
+                    <input type="text" id="testoContributo" placeholder="Scrivi qui il tuo contributo...">
+                    <button onclick="salvaContributo()">Salva sul Server</button>
+                    </div>
+                    <button id="btnAggiungi" onclick="mostraScelta()">Aggiungi</button>
+
+                    <select id="tipoAggiunta" style="display: none; margin-left: 10px; padding: 10px;" onchange="gestisciForm()">
+                    <option value="">-- Seleziona cosa aggiungere --</option>
+                    <option value="partito">Partito</option>
+                    <option value="politico">Politico</option>
+                    <option value="dichiarazione">Dichiarazione</option>
+                    </select>
+
+    <div id="form-partito" class="form-section">
+        <h3>Aggiungi Partito</h3>
+        <div class="form-group">
+            <label>Coalizione</label>
+            <select id="p_coalizione">
+                <option value="Destra">Destra</option>
+                <option value="Sinistra">Sinistra</option>
+                <option value="Indipendente">Indipendente</option>
+            </select>
+        </div>
+        <div class="form-group"><label>Orientamento</label><input type="text" id="p_orientamento" placeholder="Es: Destra / Conservatorismo"></div>
+        <div class="form-group"><label>Leader</label><input type="text" id="p_leader" placeholder="Es: Giorgia Meloni"></div>
+        <div class="form-group"><label>Partito</label><input type="text" id="p_partito" placeholder="Es: Fratelli d'Italia"></div>
+        <div class="form-group"><label>Affiliazione</label><input type="text" id="p_affiliazione" placeholder="Es: Conservatori e Riformisti (ECR)"></div>
+        <div class="form-group"><label>Descrizione</label><textarea id="p_descrizione" rows="3"></textarea></div>
+        <button onclick="salvaSulServer('partito')">Salva Partito</button>
+    </div>
+
+    <div id="form-politico" class="form-section">
+        <h3>Aggiungi Politico</h3>
+        <div class="form-group"><label>Nome</label><input type="text" id="pol_nome" placeholder="Es: Massimiliano Romeo"></div>
+        <div class="form-group">
+            <label>Partito</label>
+            <select id="pol_partito"><option>Caricamento partiti in corso...</option></select>
+        </div>
+        <div class="form-group"><label>Ruolo</label><input type="text" id="pol_ruolo" placeholder="Es: Senatore"></div>
+        <div class="form-group"><label>Funzione</label><input type="text" id="pol_funzione" placeholder="Es: Capogruppo al Senato"></div>
+        <div class="form-group"><label>Orientamento</label><input type="text" id="pol_orientamento" placeholder="Es: destra"></div>
+        <button onclick="salvaSulServer('politico')">Salva Politico</button>
+    </div>
+
+    <div id="form-dichiarazione" class="form-section">
+        <h3>Aggiungi Dichiarazione</h3>
+        <div class="form-group"><label>Data</label><input type="date" id="d_data"></div>
+        <div class="form-group">
+            <label>Nome Politico</label>
+            <select id="d_nome"><option>Caricamento politici in corso...</option></select>
+        </div>
+        <div class="form-group"><label>Messaggio</label><textarea id="d_messaggio" rows="4" placeholder="Testo della dichiarazione..."></textarea></div>
+        <button onclick="salvaSulServer('dichiarazione')">Salva Dichiarazione</button>
+    </div>
                 </div>
                 <div id="anon-area"></div>
             </div>

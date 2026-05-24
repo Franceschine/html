@@ -1,38 +1,72 @@
 const express = require('express');
-const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
-
 const app = express();
-app.use(cors());
-app.use(express.json({ limit: '1mb' }));
 
-const BASE_DIR = path.resolve(__dirname, '..');
-const CONTRIB_DIR = path.join(BASE_DIR, 'contrib');
+app.use(express.json());
+app.use(express.static('public')); // Cartella dove tieni il file HTML precedente
 
-function ensureContribDir() {
-  if (!fs.existsSync(CONTRIB_DIR)) fs.mkdirSync(CONTRIB_DIR, { recursive: true });
-}
+const dirPath = path.join(__dirname, 'contrib');
+const filePath = path.join(dirPath, 'mod.json');
 
-app.post('/contrib', (req, res) => {
-  try {
-    ensureContribDir();
-    const payload = req.body || {};
-    const ts = Date.now();
-    const name = (payload.type || 'contrib').replace(/[^a-z0-9_-]/gi, '') || 'contrib';
-    const rand = Math.random().toString(36).slice(2, 8);
-    const filename = `${name}-${ts}-${rand}.json`;
-    const filepath = path.join(CONTRIB_DIR, filename);
-    const content = { ts, payload };
-    fs.writeFileSync(filepath, JSON.stringify(content, null, 2), 'utf8');
-    res.status(201).json({ ok: true, file: `contrib/${filename}` });
-  } catch (err) {
-    console.error('Error saving contribution:', err);
-    res.status(500).json({ ok: false, error: err.message });
-  }
+// Endpoint che riceve la richiesta POST dal JavaScript del browser
+app.post('/api/salva-contributo', (req, res) => {
+    const nuovoContributo = req.body.contributo;
+
+    // 1. Assicurati che la cartella 'contrib' esista
+    if (!fs.existsSync(dirPath)) {
+        fs.mkdirSync(dirPath, { recursive: true });
+    }
+
+    let arrayContributi = [];
+
+    // 2. Se il file esiste già, leggi i vecchi dati
+    if (fs.existsSync(filePath)) {
+        try {
+            const fileData = fs.readFileSync(filePath, 'utf8');
+            arrayContributi = JSON.parse(fileData);
+            if (!Array.isArray(arrayContributi)) {
+                arrayContributi = []; // Sicurezza nel caso il JSON non sia un array
+            }
+        } catch (e) {
+            arrayContributi = []; // Se il file è vuoto o corrotto, resetta a un array vuoto
+        }
+    }
+
+    // 3. Aggiungi il nuovo contributo all'array
+    arrayContributi.push(nuovoContributo);
+
+    // 4. Salva l'array aggiornato nel file JSON (formattato con 2 spazi per leggibilità)
+    fs.writeFile(filePath, JSON.stringify(arrayContributi, null, 2), (err) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Errore di scrittura del file");
+        }
+        res.status(200).send("Salvato");
+    });
 });
+app.post('/api/salva-add', (req, res) => {
+    const nuovoDato = req.body;
+    
+    const dirPath = path.join(__dirname, 'contrib');
+    const filePath = path.join(dirPath, 'add.json');
 
-app.get('/', (req, res) => res.send('Contrib server running'));
+    if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath, { recursive: true });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Contrib server listening on http://localhost:${PORT}`));
+    let arrayDati = [];
+    if (fs.existsSync(filePath)) {
+        try {
+            const fileData = fs.readFileSync(filePath, 'utf8');
+            arrayDati = JSON.parse(fileData);
+            if (!Array.isArray(arrayDati)) arrayDati = [];
+        } catch (e) { arrayDati = []; }
+    }
+
+    arrayDati.push(nuovoDato);
+
+    fs.writeFile(filePath, JSON.stringify(arrayDati, null, 4), (err) => {
+        if (err) return res.status(500).send("Errore di scrittura file");
+        res.status(200).send("Salvato");
+    });
+});
+app.listen(3000, () => console.log('Server avviato su http://localhost:3000'));
