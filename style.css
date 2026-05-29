@@ -36,54 +36,53 @@ html[data-theme="dark"] {
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: radial-gradient(circle at top left, rgba(53, 83, 241, 0.12), transparent 24%),
-                radial-gradient(circle at bottom right, rgba(0, 86, 210, 0.10), transparent 18%),
-                var(--md-sys-color-surface);
+    font-family: 'Google Sans', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--md-sys-color-background);
     color: var(--md-sys-color-on-surface);
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    letter-spacing: 0.2px;
 }
 
 p {
-    text-align: justify;
+    text-align: left; /* Il Play Store non usa testo giustificato per migliorare la leggibilità */
 }
 
 nav {
     background-color: var(--md-sys-color-nav);
-    backdrop-filter: blur(18px);
-    height: 80px;
+    height: 72px; /* Leggermente più compatto */
     display: flex;
     justify-content: center;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 10px 36px var(--md-sys-color-shadow);
+    border-bottom: 1px solid var(--md-sys-color-outline-variant); /* Sostituita l'ombra con un bordo netto */
 }
 
 .nav-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    width: min(100%, 960px);
+    align-items: center;
+    gap: 8px;
+    width: min(100%, 1040px); /* Allineato alla larghezza del contenuto */
     padding: 0 16px;
 }
 
 nav a {
     text-decoration: none;
     color: var(--md-sys-color-on-surface-variant);
-    font-weight: 600;
-    padding: 12px 24px;
-    border-radius: 999px;
-    transition: all 0.25s ease;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 9999px; /* Pill shape standard M3 */
+    transition: background-color 0.2s ease, color 0.2s ease;
     font-size: 0.95rem;
 }
 
 nav a:hover {
-    background-color: rgba(53, 83, 241, 0.08);
-    color: var(--md-sys-color-primary);
+    background-color: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface);
 }
 
 nav a.active {
